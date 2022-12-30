@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>All Users</title>
+    <style>
+        body {
+            background: lightcyan
+        }
+    </style>
+
+</head>
+<body>
+<div align="center">
+    <div th:switch="${users}">
+        <h2 th:case="null">Такой пользователь не найден!</h2>
+        <div th:case="*">
+            <h2>Вы зашли как admin</h2>
+            <table border="3" cellpadding="6" bgcolor="#fffafa">
+                <thead>
+                <tr>
+                    <th><em>id</em></th>
+                    <th><em>username</em></th>
+                    <th><em>Пароль</em></th>
+                    <th><em>Полное имя</em></th>
+                    <th><em>email</em></th>
+                    <th><em>Права доступа</em></th>
+                    <th><em>Редактирование</em></th>
+                    <th><em>Удаление</em></th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr th:each="user : ${users}">
+                    <td th:text="${user.getId()}"></td>
+                    <td th:text="${user.getUsername()}"></td>
+                    <td th:text="${user.password}"></td>
+                    <td th:text="${user.fullname}"></td>
+                    <td th:text="${user.email}"></td>
+                    <td>
+                        <th:block th:each="msg : ${user.getRoles()}">
+                            <li th:text="${msg.getWithoutPrefix()}"></li>
+                        </th:block>
+                    </td>
+                    <td><a th:href="@{admin/change/{id}(id=${user.getId()})}">Edit</a></td>
+                    <td><a th:href="@{admin/delete/{id}(id=${user.id})}">Delete</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <br/>
+        <form th:action="@{/admin/new_user}" method="get">
+            <input type="submit" value="Добавить пользователя"/></form>
+        <br/>
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Выход"/>
+        </form>
+    </div>
+</div>
+</body>
+</html>

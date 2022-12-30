@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Change</title>
+    <style>
+        body {
+            background: aliceblue;
+        }
+    </style>
+</head>
+<body>
+<div align="center">
+    <h2>Редактирование</h2>
+    <form th:method="post" th:action="@{/admin/change}" th:object="${user}">
+        <table border="2" cellpadding="5">
+            <tr>
+                <td>
+                    <label for="id">ID</label>
+                </td>
+                <td>
+                    <input readonly type="number" th:field="*{id}" id="id" placeholder="ID">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="username">Имя пользователя</label>
+                </td>
+                <td>
+                    <input type="text" th:field="*{username}" id="username" placeholder="Username">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="password">Пароль</label>
+                </td>
+                <td>
+                    <input type="text" th:field="*{password}" id="password" placeholder="Password">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="fullname">Полное имя</label>
+                </td>
+                <td>
+                    <input type="text" th:field="*{fullname}" id="fullname" placeholder="Fullname">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="email">email</label>
+                </td>
+                <td>
+                    <input type="text" th:field="*{email}" id="email" placeholder="Email">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Roles</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="roleList"
+                           th:each="rol : ${roleList}"
+                           th:text="${rol.getWithoutPrefix()}"
+                           th:value="${rol.role}"
+                           th:field="*{roles}" />
+                </td>
+            </tr>
+        </table>
+        </p>
+        <br/>
+        <input type="submit" value="Сохранить изменения">
+        <br/>
+        <br/>
+    </form>
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Выход"/>
+    </form>
+</div>
+</body>
+</html>

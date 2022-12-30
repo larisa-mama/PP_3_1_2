@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Spring Security Example</title>
+    <style>
+        body {
+            background: lightcyan
+        }
+    </style>
+</head>
+<body>
+<div align="center">
+<h1>Ваши данные</h1>
+
+<div>
+    <th:block>
+        <h3 th:text="'User name - ' + ${messages.getUsername()}"></h3>
+        <h3 th:text="'Email - ' + ${messages.getEmail()}"></h3>
+        <h3 th:text="'Ваше имя - '+ ${messages.getFullname()}"></h3>
+               <h4 th:text="'Права доступа -'"></h4>
+        <th:block
+                th:each="msg : ${messages.getRoles()}">
+            <h3 th:text="${msg.getWithoutPrefix()}"></h3>
+        </th:block>
+    </th:block>
+</div>
+
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Выход"/>
+</form>
+</body>
+</html>
