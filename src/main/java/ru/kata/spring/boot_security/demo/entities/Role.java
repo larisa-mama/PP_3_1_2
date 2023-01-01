@@ -28,9 +28,8 @@ public class Role implements GrantedAuthority {
     public Role(String role) {
         this.role = role;
     }
-public String getWithoutPrefix() {
-    String prefix = "ROLE_";
-    return role.substring(prefix.length());             // метод для вывода в форме без ROLE_
+public String withoutPrefix() {
+       return role.substring(5);             // метод для вывода в форме без ROLE_
 }
 
     @Override

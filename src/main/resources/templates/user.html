@@ -20,7 +20,7 @@
                <h4 th:text="'Права доступа -'"></h4>
         <th:block
                 th:each="msg : ${messages.getRoles()}">
-            <h3 th:text="${msg.getWithoutPrefix()}"></h3>
+            <h3 th:text="${msg.withoutPrefix()}"></h3>
         </th:block>
     </th:block>
 </div>

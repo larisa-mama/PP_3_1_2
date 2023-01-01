@@ -39,7 +39,7 @@
                     <td th:text="${user.email}"></td>
                     <td>
                         <th:block th:each="msg : ${user.getRoles()}">
-                            <li th:text="${msg.getWithoutPrefix()}"></li>
+                            <li th:text="${msg.withoutPrefix()}"></li>
                         </th:block>
                     </td>
                     <td><a th:href="@{admin/change/{id}(id=${user.getId()})}">Edit</a></td>

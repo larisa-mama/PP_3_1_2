@@ -28,6 +28,7 @@ public class InitDB {
         List<Role> roleAdmin = new ArrayList<>();
         List<Role> roleUser = new ArrayList<>();
         roleAdmin.add(role1);
+        roleAdmin.add(role2);
         roleUser.add(role2);
         User user1 = new User("admin", "Roma Melnikov",  "admin@mail.ru", "admin", roleAdmin);
         User user2 = new User("user", "Lara Melnikova",  "user@mail.ru", "user", roleUser);
