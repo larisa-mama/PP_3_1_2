@@ -12,10 +12,9 @@ public class RoleDaoImpl implements RoleDao {
     @PersistenceContext                     //предназаначена для автоматического связывания менеджера сущностей с бином.
     private EntityManager entityManager;
 
-    public boolean add(Role user) {
+    public void add(Role user) {
         entityManager.persist(user);            //Чтобы изменить состояние сущности с Transient (New) на Managed (Persisted)
-        return true;
-    }
+            }
 
     @Override
     public Role findByIdRole(Long id) {

@@ -61,7 +61,7 @@
                 <td>
                     <input type="checkbox" name="roleList"
                            th:each="rol : ${roleList}"
-                           th:text="${rol.getWithoutPrefix()}"
+                           th:text="${rol.withoutPrefix()}"
                            th:value="${rol.role}"
                            th:field="*{roles}" />
                 </td>
