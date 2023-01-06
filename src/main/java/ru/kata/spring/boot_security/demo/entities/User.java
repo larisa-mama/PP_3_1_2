@@ -34,7 +34,7 @@ public class User implements UserDetails {
         this.password = password;
         this.roles = roles;
     }
-
+/*
     public User(Long id, String username, String fullname, String email, String password, List<Role> roles) {
         this.id = id;
         this.username = username;
@@ -43,7 +43,7 @@ public class User implements UserDetails {
         this.password = password;
         this.roles = roles;
     }
-
+*/
     @ManyToMany(fetch = FetchType.LAZY)     //список ролей загружается только по запросу
     @JoinTable(
             name = "user_roles",
